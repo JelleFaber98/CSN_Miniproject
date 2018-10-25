@@ -3,7 +3,7 @@
 from urllib.request import urlopen
 
 # constanten: hostname van de server en definitie van de knop
-hostname='192.168.42.6:5000' # vul hier de juiste hostname en poort in
+hostname='192.168.42.5:5000' # vul hier de juiste hostname en poort in
 
 # hulpfunctie voor sturen van een bericht naar de server
 #    het antwoord wordt simpelweg geprint
