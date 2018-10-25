@@ -19,7 +19,6 @@ def alarmAan():
 httpconnect('')
 
 while True:
-    print(GPIO.input(21))
     if GPIO.input(21) == 1:
         alarmAan()
 GPIO.cleanup()
