@@ -31,8 +31,8 @@ httpconnect('')
 #     en de functie knopuit() bij invoer van '-' (gevolgd door enter)
 while True:
     invoer=input()
-    if invoer=='+':
+    if invoer == '+':
         knopin()
-    elif invoer=='-':
+    elif invoer == '-':
         knopuit()
     # overige invoer wordt genegeerd
