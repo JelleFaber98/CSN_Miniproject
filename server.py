@@ -2,17 +2,17 @@ from flask import Flask
 import RPi.GPIO as GPIO
 import time
 
-app = Flask(__name__)   # standaard gebruik van Flask
+app = Flask(__name__)
 @app.route("/")
 def ready():
     return "Server beschikbaar\n"
 
-@app.route("/alarmAaan")
+@app.route("/alarmAan")
 
 def alarmAan():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(18, GPIO.OUT)
-    GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+    GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(17, GPIO.OUT)
     while True:
         if GPIO.input(24) == 0:
