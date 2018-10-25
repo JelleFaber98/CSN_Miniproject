@@ -1,6 +1,8 @@
-#!/usr/bin/python3
-
 from urllib.request import urlopen
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
 # constanten: hostname van de server en definitie van de knop
 hostname='192.168.42.5:5000' # vul hier de juiste hostname en poort in
@@ -19,10 +21,6 @@ def httpconnect(action):
 def knopin():
     httpconnect('knopin')
 
-# actie voor losgelaten knop (voor gebruik met gpiozero geen argument)
-def knopuit():
-    httpconnect('knopuit')
-
 # klaar voor gebruik, open de basis URL
 httpconnect('')
 
@@ -31,8 +29,6 @@ httpconnect('')
 #     en de functie knopuit() bij invoer van '-' (gevolgd door enter)
 while True:
     invoer=input()
-    if invoer == '+':
+    if invoer == '+' or GPIO.input(24) == 0:
         knopin()
-    elif invoer == '-':
-        knopuit()
-    # overige invoer wordt genegeerd
+GPIO.cleanup()
